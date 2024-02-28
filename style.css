@@ -1,4 +1,12 @@
 /* style.css */
 #canvas {
     border: 1px solid black;
+    margin-top: 10px;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin-bottom: 10px;
 }
