@@ -8,6 +8,7 @@ var size = document.getElementById('size');
 var clear = document.getElementById('clear');
 var mode = document.getElementById('mode');
 var eraser = document.getElementById('eraser');
+var darkMode = document.getElementById('darkMode');
 
 var currentMode = 'brush';
 
@@ -67,9 +68,26 @@ function deactivateEraser() {
     currentMode = mode.value;
 }
 
+function toggleDarkMode() {
+    if (darkMode.checked) {
+        document.documentElement.style.setProperty('--background-color', '#333');
+        document.documentElement.style.setProperty('--controls-background-color', '#444');
+        document.documentElement.style.setProperty('--border-color', '#999');
+        document.documentElement.style.setProperty('--focus-border-color', '#ddd');
+        document.documentElement.style.setProperty('--text-color', '#fff');
+    } else {
+        document.documentElement.style.setProperty('--background-color', '#f0f0f0');
+        document.documentElement.style.setProperty('--controls-background-color', '#fff');
+        document.documentElement.style.setProperty('--border-color', '#ddd');
+        document.documentElement.style.setProperty('--focus-border-color', '#999');
+        document.documentElement.style.setProperty('--text-color', '#000');
+    }
+}
+
 eraser.addEventListener('mousedown', activateEraser);
 eraser.addEventListener('mouseup', deactivateEraser);
 canvas.addEventListener('mousedown', startDraw);
 canvas.addEventListener('mouseup', endDraw);
 canvas.addEventListener('mousemove', draw);
 clear.addEventListener('click', clearCanvas);
+darkMode.addEventListener('change', toggleDarkMode);
